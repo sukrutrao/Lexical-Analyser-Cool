@@ -80,28 +80,6 @@ tokens{
 
 SEMICOLON   : ';';
 DARROW      : '=>';
-BOOL_CONST	: 'T'[Rr][Uu][Ee] | 'F'[Aa][Ll][Ss][Ee] ;
-TYPEID		: [A-Z][a-z|A-Z|0-9|_]* ;
-OBJECTID	: [a-z][a-z|A-Z|0-9|_]* ;
-INT_CONST	: [0-9]+ ;
-STR_CONST	: '\"'[A-Z|a-z]*'\"' ;
-LPAREN		: '(' ;
-RPAREN		: ')' ;
-COLON		: ':' ;
-ATSYM		: '@' ;
-COMMA		: ',' ;
-PLUS		: '+' ;
-MINUS		: '-' ;
-STAR		: '*' ;
-SLASH		: '/' ;
-TILDE		: '~' ;
-LT			: '<' ;
-EQUALS		: '=' ;
-LBRACE		: '{' ;
-RBRACE		: '}' ;
-DOT			: '.' ;
-LE  		: '<=' ;
-ASSIGN		: '<-' ;
 CLASS		: [Cc][Ll][Aa][Ss][Ss] ;
 ELSE		: [Ee][Ll][Ss][Ee] ;
 FI			: [Ff][Ii];
@@ -119,3 +97,45 @@ OF			: [Oo][Ff] ;
 NEW			: [Nn][Ee][Ww] ;
 ISVOID		: [Ii][Ss][Vv][Oo][Ii][Dd] ;
 NOT			: [Nn][Oo][Tt] ;
+BOOL_CONST	: 't'[Rr][Uu][Ee] | 'f'[Aa][Ll][Ss][Ee] ;
+TYPEID		: [A-Z][a-z|A-Z|0-9|_]* ;
+OBJECTID	: [a-z][a-z|A-Z|0-9|_]* ;
+INT_CONST	: [0-9]+ ;
+LPAREN		: '(' ;
+RPAREN		: ')' ;
+COLON		: ':' ;
+ATSYM		: '@' ;
+COMMA		: ',' ;
+PLUS		: '+' ;
+MINUS		: '-' ;
+STAR		: '*' ;
+SLASH		: '/' ;
+TILDE		: '~' ;
+LT			: '<' ;
+EQUALS		: '=' ;
+LBRACE		: '{' ;
+RBRACE		: '}' ;
+DOT			: '.' ;
+LE  		: '<=' ;
+ASSIGN		: '<-' ;
+BLCOMMENT	: '(*'.*?BLCOMMENT?'*)' -> skip;
+WHITESPACE	: [\n\f\r\v\b\t ]+ -> skip ;
+
+
+STR_START	: '"' -> skip, pushMode(STRING_MODE);
+
+
+mode STRING_MODE;
+STRING_END	: (STRING_BODY_PLAIN | E_NEWLINE)*'"' -> popMode, type(STR_CONST);
+E_NEWLINE	: '\\''\u000d' ;
+/*NEWLINE		: '\u000d' {reportError("Unterminated string constant");} -> skip, mode(DEFAULT_MODE) ;
+NULL_CHAR	: '\u0000' {reportError("String contains null character");} -> skip, mode(DEFAULT_MODE) ;
+F_EOF_STR	: [EOF] {reportError("String contains EOF	");} -> skip, mode(DEFAULT_MODE) ;*/
+STRING_BODY_PLAIN	: ~('\u0000' | [EOF] | '"' | '\u000d' | '\\')+ ;
+
+
+
+
+
+
+
