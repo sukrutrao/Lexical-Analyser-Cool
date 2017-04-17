@@ -80,10 +80,42 @@ tokens{
 
 SEMICOLON   : ';';
 DARROW      : '=>';
+BOOL_CONST	: 'T'[Rr][Uu][Ee] | 'F'[Aa][Ll][Ss][Ee] ;
 TYPEID		: [A-Z][a-z|A-Z|0-9|_]* ;
 OBJECTID	: [a-z][a-z|A-Z|0-9|_]* ;
-BOOL_CONST	: 'T'[Rr][Uu][Ee] | 'F'[Aa][Ll][Ss][Ee] ;
-INT_CONST	: [0-9]+
-STR_CONST	: \"[A-Z|a-z]*\" ; /* not complete */
-
-
+INT_CONST	: [0-9]+ ;
+STR_CONST	: '\"'[A-Z|a-z]*'\"' ;
+LPAREN		: '(' ;
+RPAREN		: ')' ;
+COLON		: ':' ;
+ATSYM		: '@' ;
+COMMA		: ',' ;
+PLUS		: '+' ;
+MINUS		: '-' ;
+STAR		: '*' ;
+SLASH		: '/' ;
+TILDE		: '~' ;
+LT			: '<' ;
+EQUALS		: '=' ;
+LBRACE		: '{' ;
+RBRACE		: '}' ;
+DOT			: '.' ;
+LE  		: '<=' ;
+ASSIGN		: '<-' ;
+CLASS		: [Cc][Ll][Aa][Ss][Ss] ;
+ELSE		: [Ee][Ll][Ss][Ee] ;
+FI			: [Ff][Ii];
+IF			: [Ii][Ff] ;
+IN 			: [Ii][Nn] ;
+INHERITS	: [Ii][Nn][Hh][Ee][Rr][Ii][Tt][Ss] ;
+LET			: [Ll][Ee][Tt] ;
+LOOP		: [Ll][Oo][Oo][Pp] ;
+POOL		: [Pp][Oo][Oo][Ll] ;
+THEN		: [Tt][Hh][Ee][Nn] ;
+WHILE		: [Ww][Hh][Ii][Ll][Ee] ;
+CASE		: [Cc][Aa][Ss][Ee] ;
+ESAC		: [Ee][Ss][Aa][Cc] ;
+OF			: [Oo][Ff] ;
+NEW			: [Nn][Ee][Ww] ;
+ISVOID		: [Ii][Ss][Vv][Oo][Ii][Dd] ;
+NOT			: [Nn][Oo][Tt] ;
