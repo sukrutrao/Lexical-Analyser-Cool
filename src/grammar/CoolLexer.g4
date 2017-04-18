@@ -68,7 +68,9 @@ tokens{
 	public void processString() {
 		Token t = _factory.create(_tokenFactorySourcePair, _type, _text, _channel, _tokenStartCharIndex, getCharIndex()-1, _tokenStartLine, _tokenStartCharPositionInLine);
 		String text = t.getText();
+//		System.out.println(text);
 		text = text.substring(0,text.length()-1);
+
 		if(text.length() > 1024)
 		{
 			reportError("String constant too long");
@@ -161,7 +163,7 @@ DOT			: '.' ;
 LE  		: '<=' ;
 ASSIGN		: '<-' ;
 //BLCOMMENT	: '(*'.*?BLCOMMENT?'*)' -> skip;
-WHITESPACE	: [\n\f\r\v\b\t ]+ -> skip ;
+WHITESPACE	: ('\n' | '\f' | '\r' | '\t' | '\u000b')+ -> skip ; //TODO \v in ANTLR!!
 /*STR_CONST	: '"'~('\u0000' | [EOF] | '"' | '\u000d' )* '"' {processString();};*/
 /*STR_CONST	: '"'~('\u0000' | [EOF] | '"' | '\n')*'"' {processString();}
 			| '"'~('\u0000' | '"' | '\n')*[EOF] {reportError("String contains EOF");}
@@ -170,11 +172,11 @@ WHITESPACE	: [\n\f\r\v\b\t ]+ -> skip ;
 
 STR_START	: '"' -> skip, pushMode(STRING_MODE);
 COMMENT_START	: '(*' -> skip, pushMode(COMMENT_MODE);
-SINGLE_LINE_COMMENT	: ('--'~('\n' | [EOF])*'\n' 
-					| '--'~('\n' | [EOF])*(EOF))  -> skip
+SINGLE_LINE_COMMENT	: ('--'~('\n')*'\n' 
+					| '--'~('\n')*(EOF))  -> skip
 					;
 
-INCORRECT_CHARACTERS	: . {processCharacter();};
+INCORRECT_CHARACTERS	: . {reportError(_factory.create(_tokenFactorySourcePair, _type, _text, _channel, _tokenStartCharIndex, getCharIndex()-1, _tokenStartLine, _tokenStartCharPositionInLine).getText());};
 
 
 mode STRING_MODE;
@@ -183,7 +185,7 @@ STRING_END	: '"' {processString();} -> popMode;
 NEWLINE		: '\n' {reportError("Unterminated string constant");} -> mode(DEFAULT_MODE) ;
 //NULL_CHAR	: '\u0000' {reportError("String contains null character");} -> mode(DEFAULT_MODE) ;
 F_EOF_STR	: .(EOF) {reportError("EOF in string constant");}->  mode(DEFAULT_MODE) ;
-STRING_BODY_PLAIN	: (~('\u0000' | [EOF] | '"' | '\n')('\\''\n')?('\\''\"')?)+ -> more//{processString();}
+STRING_BODY_PLAIN	: (~( '"' | '\n')('\\''\n')?('\\''\"')?)+ -> more//{processString();}
 				    ; //TODO unescaped newline - maybe done
 //fragment END_QUOTE	: ~('\\')'"';
 /*BACKSLASH	: '\\' -> skip, pushMode(ESCAPE_MODE);

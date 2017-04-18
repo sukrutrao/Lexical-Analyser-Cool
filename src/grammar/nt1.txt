@@ -1,0 +1,2499 @@
+#name "nontrivial1.cl"
+#5 CLASS
+#5 TYPEID Float
+#5 '{'
+#7 OBJECTID integer
+#7 ':'
+#7 TYPEID Int
+#7 ';'
+#8 OBJECTID fraction
+#8 ':'
+#8 TYPEID Int
+#8 ';'
+#9 OBJECTID sign
+#9 ':'
+#9 TYPEID Bool
+#9 ';'
+#10 OBJECTID padding
+#10 ':'
+#10 TYPEID Int
+#10 ';'
+#13 OBJECTID setDefault
+#13 '('
+#13 ')'
+#13 ':'
+#13 TYPEID SELF_TYPE
+#13 '{'
+#14 '{'
+#15 OBJECTID integer
+#15 ASSIGN
+#15 INT_CONST 0
+#15 ';'
+#16 OBJECTID fraction
+#16 ASSIGN
+#16 INT_CONST 0
+#16 ';'
+#17 OBJECTID sign
+#17 ASSIGN
+#17 BOOL_CONST true
+#17 ';'
+#18 OBJECTID padding
+#18 ASSIGN
+#18 INT_CONST 0
+#18 ';'
+#19 OBJECTID self
+#19 ';'
+#20 '}'
+#21 '}'
+#21 ';'
+#24 OBJECTID checkValid
+#24 '('
+#24 OBJECTID input_value
+#24 ':'
+#24 TYPEID String
+#24 ')'
+#24 ':'
+#24 TYPEID Bool
+#24 '{'
+#25 LET
+#25 OBJECTID i
+#25 ':'
+#25 TYPEID Int
+#25 ASSIGN
+#25 INT_CONST 0
+#25 ','
+#25 OBJECTID found
+#25 ':'
+#25 TYPEID Bool
+#25 ASSIGN
+#25 BOOL_CONST false
+#25 ','
+#25 OBJECTID result
+#25 ':'
+#25 TYPEID Bool
+#25 ASSIGN
+#25 BOOL_CONST true
+#25 IN
+#26 '{'
+#27 IF
+#27 OBJECTID input_value
+#27 '.'
+#27 OBJECTID length
+#27 '('
+#27 ')'
+#27 '='
+#27 INT_CONST 0
+#28 THEN
+#28 OBJECTID result
+#28 ASSIGN
+#28 BOOL_CONST false
+#29 ELSE
+#29 BOOL_CONST false
+#30 FI
+#30 ';'
+#31 WHILE
+#31 OBJECTID i
+#31 '<'
+#31 OBJECTID input_value
+#31 '.'
+#31 OBJECTID length
+#31 '('
+#31 ')'
+#32 LOOP
+#33 '{'
+#34 IF
+#34 OBJECTID i
+#34 '='
+#34 INT_CONST 0
+#35 THEN
+#36 '{'
+#37 IF
+#37 NOT
+#37 OBJECTID input_value
+#37 '.'
+#37 OBJECTID substr
+#37 '('
+#37 INT_CONST 0
+#37 ','
+#37 INT_CONST 1
+#37 ')'
+#37 '='
+#37 STR_CONST "-"
+#38 THEN
+#39 '{'
+#40 IF
+#40 NOT
+#40 OBJECTID isDigit
+#40 '('
+#40 OBJECTID input_value
+#40 ','
+#40 INT_CONST 0
+#40 ')'
+#41 THEN
+#41 OBJECTID result
+#41 ASSIGN
+#41 BOOL_CONST false
+#42 ELSE
+#42 BOOL_CONST false
+#43 FI
+#43 ';'
+#44 '}'
+#45 ELSE
+#45 BOOL_CONST false
+#46 FI
+#46 ';'
+#47 '}'
+#48 ELSE
+#49 '{'
+#50 IF
+#50 OBJECTID input_value
+#50 '.'
+#50 OBJECTID substr
+#50 '('
+#50 OBJECTID i
+#50 ','
+#50 INT_CONST 1
+#50 ')'
+#50 '='
+#50 STR_CONST "."
+#51 THEN
+#52 '{'
+#53 IF
+#53 OBJECTID found
+#54 THEN
+#54 OBJECTID result
+#54 ASSIGN
+#54 BOOL_CONST false
+#55 ELSE
+#55 OBJECTID found
+#55 ASSIGN
+#55 BOOL_CONST true
+#56 FI
+#56 ';'
+#57 '}'
+#58 ELSE
+#59 '{'
+#60 IF
+#60 NOT
+#60 OBJECTID isDigit
+#60 '('
+#60 OBJECTID input_value
+#60 ','
+#60 OBJECTID i
+#60 ')'
+#61 THEN
+#61 OBJECTID result
+#61 ASSIGN
+#61 BOOL_CONST false
+#62 ELSE
+#62 BOOL_CONST false
+#63 FI
+#63 ';'
+#64 '}'
+#65 FI
+#65 ';'
+#66 '}'
+#67 FI
+#67 ';'
+#68 OBJECTID i
+#68 ASSIGN
+#68 OBJECTID i
+#68 '+'
+#68 INT_CONST 1
+#68 ';'
+#69 '}'
+#70 POOL
+#70 ';'
+#71 OBJECTID result
+#71 ';'
+#72 '}'
+#73 '}'
+#73 ';'
+#76 OBJECTID parse
+#76 '('
+#76 OBJECTID input_value
+#76 ':'
+#76 TYPEID String
+#76 ')'
+#76 ':'
+#76 TYPEID SELF_TYPE
+#76 '{'
+#77 LET
+#77 OBJECTID i
+#77 ':'
+#77 TYPEID Int
+#77 ASSIGN
+#77 INT_CONST 0
+#77 ','
+#77 OBJECTID found
+#77 ':'
+#77 TYPEID Bool
+#77 ASSIGN
+#77 BOOL_CONST false
+#77 ','
+#77 OBJECTID j
+#77 ':'
+#77 TYPEID Int
+#77 IN
+#78 '{'
+#79 WHILE
+#79 OBJECTID i
+#79 '<'
+#79 OBJECTID input_value
+#79 '.'
+#79 OBJECTID length
+#79 '('
+#79 ')'
+#80 LOOP
+#81 '{'
+#82 IF
+#82 OBJECTID i
+#82 '='
+#82 INT_CONST 0
+#83 THEN
+#84 '{'
+#85 IF
+#85 OBJECTID input_value
+#85 '.'
+#85 OBJECTID substr
+#85 '('
+#85 INT_CONST 0
+#85 ','
+#85 INT_CONST 1
+#85 ')'
+#85 '='
+#85 STR_CONST "-"
+#86 THEN
+#86 OBJECTID sign
+#86 ASSIGN
+#86 BOOL_CONST false
+#87 ELSE
+#88 '{'
+#89 OBJECTID sign
+#89 ASSIGN
+#89 BOOL_CONST true
+#89 ';'
+#90 OBJECTID input_value
+#90 ASSIGN
+#90 STR_CONST "+"
+#90 '.'
+#90 OBJECTID concat
+#90 '('
+#90 OBJECTID input_value
+#90 ')'
+#90 ';'
+#91 '}'
+#92 FI
+#92 ';'
+#93 '}'
+#94 ELSE
+#95 '{'
+#96 IF
+#96 OBJECTID input_value
+#96 '.'
+#96 OBJECTID substr
+#96 '('
+#96 OBJECTID i
+#96 ','
+#96 INT_CONST 1
+#96 ')'
+#96 '='
+#96 STR_CONST "."
+#97 THEN
+#98 '{'
+#99 OBJECTID integer
+#99 ASSIGN
+#99 OBJECTID atoi
+#99 '('
+#99 OBJECTID input_value
+#99 '.'
+#99 OBJECTID substr
+#99 '('
+#99 INT_CONST 1
+#99 ','
+#99 OBJECTID i
+#99 '-'
+#99 INT_CONST 1
+#99 ')'
+#99 ')'
+#99 ';'
+#100 OBJECTID padding
+#100 ASSIGN
+#100 INT_CONST 0
+#100 ';'
+#101 OBJECTID j
+#101 ASSIGN
+#101 OBJECTID i
+#101 '+'
+#101 INT_CONST 1
+#101 ';'
+#102 WHILE
+#102 OBJECTID j
+#102 '<'
+#102 OBJECTID input_value
+#102 '.'
+#102 OBJECTID length
+#102 '('
+#102 ')'
+#103 LOOP
+#104 '{'
+#105 IF
+#105 OBJECTID input_value
+#105 '.'
+#105 OBJECTID substr
+#105 '('
+#105 OBJECTID j
+#105 ','
+#105 INT_CONST 1
+#105 ')'
+#105 '='
+#105 STR_CONST "0"
+#106 THEN
+#107 '{'
+#108 OBJECTID padding
+#108 ASSIGN
+#108 OBJECTID padding
+#108 '+'
+#108 INT_CONST 1
+#108 ';'
+#109 OBJECTID j
+#109 ASSIGN
+#109 OBJECTID j
+#109 '+'
+#109 INT_CONST 1
+#109 ';'
+#110 '}'
+#111 ELSE
+#111 OBJECTID j
+#111 ASSIGN
+#111 OBJECTID input_value
+#111 '.'
+#111 OBJECTID length
+#111 '('
+#111 ')'
+#112 FI
+#112 ';'
+#113 '}'
+#114 POOL
+#114 ';'
+#115 OBJECTID fraction
+#115 ASSIGN
+#115 OBJECTID atoi
+#115 '('
+#115 OBJECTID input_value
+#115 '.'
+#115 OBJECTID substr
+#115 '('
+#115 OBJECTID i
+#115 '+'
+#115 INT_CONST 1
+#115 ','
+#115 OBJECTID input_value
+#115 '.'
+#115 OBJECTID length
+#115 '('
+#115 ')'
+#115 '-'
+#115 OBJECTID i
+#115 '-'
+#115 INT_CONST 1
+#115 ')'
+#115 ')'
+#115 ';'
+#116 OBJECTID found
+#116 ASSIGN
+#116 BOOL_CONST true
+#116 ';'
+#117 '}'
+#118 ELSE
+#118 BOOL_CONST false
+#119 FI
+#119 ';'
+#120 '}'
+#121 FI
+#121 ';'
+#122 OBJECTID i
+#122 ASSIGN
+#122 OBJECTID i
+#122 '+'
+#122 INT_CONST 1
+#122 ';'
+#123 '}'
+#124 POOL
+#124 ';'
+#125 IF
+#125 OBJECTID found
+#125 '='
+#125 BOOL_CONST false
+#126 THEN
+#126 OBJECTID integer
+#126 ASSIGN
+#126 OBJECTID atoi
+#126 '('
+#126 OBJECTID input_value
+#126 '.'
+#126 OBJECTID substr
+#126 '('
+#126 INT_CONST 1
+#126 ','
+#126 OBJECTID input_value
+#126 '.'
+#126 OBJECTID length
+#126 '('
+#126 ')'
+#126 '-'
+#126 INT_CONST 1
+#126 ')'
+#126 ')'
+#127 ELSE
+#127 BOOL_CONST false
+#128 FI
+#128 ';'
+#129 OBJECTID self
+#129 ';'
+#130 '}'
+#131 '}'
+#131 ';'
+#134 OBJECTID display
+#134 '('
+#134 ')'
+#134 ':'
+#134 TYPEID String
+#134 '{'
+#135 LET
+#135 OBJECTID start
+#135 ':'
+#135 TYPEID String
+#135 ASSIGN
+#135 STR_CONST ""
+#135 ','
+#135 OBJECTID i
+#135 ':'
+#135 TYPEID Int
+#135 ASSIGN
+#135 INT_CONST 0
+#135 IN
+#136 '{'
+#137 IF
+#137 NOT
+#137 OBJECTID sign
+#138 THEN
+#138 OBJECTID start
+#138 ASSIGN
+#138 STR_CONST "-"
+#139 ELSE
+#139 OBJECTID start
+#139 ASSIGN
+#139 STR_CONST ""
+#140 FI
+#140 ';'
+#141 OBJECTID start
+#141 ASSIGN
+#141 OBJECTID start
+#141 '.'
+#141 OBJECTID concat
+#141 '('
+#141 OBJECTID itoa
+#141 '('
+#141 OBJECTID integer
+#141 ')'
+#141 ')'
+#141 '.'
+#141 OBJECTID concat
+#141 '('
+#141 STR_CONST "."
+#141 ')'
+#141 ';'
+#142 WHILE
+#142 OBJECTID i
+#142 '<'
+#142 OBJECTID padding
+#143 LOOP
+#144 '{'
+#145 OBJECTID start
+#145 ASSIGN
+#145 OBJECTID start
+#145 '.'
+#145 OBJECTID concat
+#145 '('
+#145 STR_CONST "0"
+#145 ')'
+#145 ';'
+#146 OBJECTID i
+#146 ASSIGN
+#146 OBJECTID i
+#146 '+'
+#146 INT_CONST 1
+#146 ';'
+#147 '}'
+#148 POOL
+#148 ';'
+#149 OBJECTID start
+#149 ASSIGN
+#149 OBJECTID start
+#149 '.'
+#149 OBJECTID concat
+#149 '('
+#149 OBJECTID itoa
+#149 '('
+#149 OBJECTID fraction
+#149 ')'
+#149 ')'
+#149 ';'
+#150 OBJECTID start
+#150 ';'
+#151 '}'
+#152 '}'
+#152 ';'
+#155 OBJECTID modulo
+#155 '('
+#155 OBJECTID a
+#155 ':'
+#155 TYPEID Int
+#155 ','
+#155 OBJECTID b
+#155 ':'
+#155 TYPEID Int
+#155 ')'
+#155 ':'
+#155 TYPEID Int
+#155 '{'
+#156 LET
+#156 OBJECTID q
+#156 ':'
+#156 TYPEID Int
+#156 ','
+#156 OBJECTID r
+#156 ':'
+#156 TYPEID Int
+#156 IN
+#157 '{'
+#158 IF
+#158 OBJECTID b
+#158 '='
+#158 INT_CONST 0
+#159 THEN
+#159 INT_CONST 0
+#160 ELSE
+#161 '{'
+#162 OBJECTID q
+#162 ASSIGN
+#162 OBJECTID a
+#162 '/'
+#162 OBJECTID b
+#162 ';'
+#163 OBJECTID r
+#163 ASSIGN
+#163 OBJECTID a
+#163 '-'
+#163 OBJECTID b
+#163 '*'
+#163 OBJECTID q
+#163 ';'
+#164 OBJECTID r
+#164 ';'
+#165 '}'
+#166 FI
+#166 ';'
+#167 '}'
+#168 '}'
+#168 ';'
+#171 OBJECTID itoa
+#171 '('
+#171 OBJECTID input
+#171 ':'
+#171 TYPEID Int
+#171 ')'
+#171 ':'
+#171 TYPEID String
+#171 '{'
+#172 LET
+#172 OBJECTID result
+#172 ':'
+#172 TYPEID String
+#172 ASSIGN
+#172 STR_CONST ""
+#172 ','
+#172 OBJECTID r
+#172 ':'
+#172 TYPEID Int
+#172 IN
+#173 '{'
+#174 IF
+#174 OBJECTID input
+#174 '='
+#174 INT_CONST 0
+#175 THEN
+#175 OBJECTID result
+#175 ASSIGN
+#175 STR_CONST "0"
+#176 ELSE
+#177 '{'
+#178 WHILE
+#178 INT_CONST 0
+#178 '<'
+#178 OBJECTID input
+#179 LOOP
+#180 '{'
+#181 OBJECTID r
+#181 ASSIGN
+#181 OBJECTID modulo
+#181 '('
+#181 OBJECTID input
+#181 ','
+#181 INT_CONST 10
+#181 ')'
+#181 ';'
+#182 OBJECTID result
+#182 ASSIGN
+#182 OBJECTID convString
+#182 '('
+#182 OBJECTID r
+#182 ')'
+#182 '.'
+#182 OBJECTID concat
+#182 '('
+#182 OBJECTID result
+#182 ')'
+#182 ';'
+#183 OBJECTID input
+#183 ASSIGN
+#183 OBJECTID input
+#183 '/'
+#183 INT_CONST 10
+#183 ';'
+#184 '}'
+#185 POOL
+#185 ';'
+#186 '}'
+#187 FI
+#187 ';'
+#188 OBJECTID result
+#188 ';'
+#189 '}'
+#190 '}'
+#190 ';'
+#193 OBJECTID convString
+#193 '('
+#193 OBJECTID input
+#193 ':'
+#193 TYPEID Int
+#193 ')'
+#193 ':'
+#193 TYPEID String
+#193 '{'
+#194 LET
+#194 OBJECTID result
+#194 ':'
+#194 TYPEID String
+#194 IN
+#195 '{'
+#196 IF
+#196 OBJECTID input
+#196 '='
+#196 INT_CONST 1
+#196 THEN
+#196 OBJECTID result
+#196 ASSIGN
+#196 STR_CONST "1"
+#196 ELSE
+#197 IF
+#197 OBJECTID input
+#197 '='
+#197 INT_CONST 2
+#197 THEN
+#197 OBJECTID result
+#197 ASSIGN
+#197 STR_CONST "2"
+#197 ELSE
+#198 IF
+#198 OBJECTID input
+#198 '='
+#198 INT_CONST 3
+#198 THEN
+#198 OBJECTID result
+#198 ASSIGN
+#198 STR_CONST "3"
+#198 ELSE
+#199 IF
+#199 OBJECTID input
+#199 '='
+#199 INT_CONST 4
+#199 THEN
+#199 OBJECTID result
+#199 ASSIGN
+#199 STR_CONST "4"
+#199 ELSE
+#200 IF
+#200 OBJECTID input
+#200 '='
+#200 INT_CONST 5
+#200 THEN
+#200 OBJECTID result
+#200 ASSIGN
+#200 STR_CONST "5"
+#200 ELSE
+#201 IF
+#201 OBJECTID input
+#201 '='
+#201 INT_CONST 6
+#201 THEN
+#201 OBJECTID result
+#201 ASSIGN
+#201 STR_CONST "6"
+#201 ELSE
+#202 IF
+#202 OBJECTID input
+#202 '='
+#202 INT_CONST 7
+#202 THEN
+#202 OBJECTID result
+#202 ASSIGN
+#202 STR_CONST "7"
+#202 ELSE
+#203 IF
+#203 OBJECTID input
+#203 '='
+#203 INT_CONST 8
+#203 THEN
+#203 OBJECTID result
+#203 ASSIGN
+#203 STR_CONST "8"
+#203 ELSE
+#204 IF
+#204 OBJECTID input
+#204 '='
+#204 INT_CONST 9
+#204 THEN
+#204 OBJECTID result
+#204 ASSIGN
+#204 STR_CONST "9"
+#204 ELSE
+#205 OBJECTID result
+#205 ASSIGN
+#205 STR_CONST "0"
+#206 FI
+#206 FI
+#206 FI
+#206 FI
+#206 FI
+#206 FI
+#206 FI
+#206 FI
+#206 FI
+#206 ';'
+#207 OBJECTID result
+#207 ';'
+#208 '}'
+#209 '}'
+#209 ';'
+#212 OBJECTID atoi
+#212 '('
+#212 OBJECTID input_string
+#212 ':'
+#212 TYPEID String
+#212 ')'
+#212 ':'
+#212 TYPEID Int
+#212 '{'
+#213 LET
+#213 OBJECTID result
+#213 ':'
+#213 TYPEID Int
+#213 ASSIGN
+#213 INT_CONST 0
+#213 ','
+#213 OBJECTID i
+#213 ':'
+#213 TYPEID Int
+#213 ASSIGN
+#213 INT_CONST 0
+#213 IN
+#214 '{'
+#215 WHILE
+#215 OBJECTID i
+#215 '<'
+#215 OBJECTID input_string
+#215 '.'
+#215 OBJECTID length
+#215 '('
+#215 ')'
+#216 LOOP
+#217 '{'
+#218 OBJECTID result
+#218 ASSIGN
+#218 OBJECTID result
+#218 '*'
+#218 INT_CONST 10
+#218 '+'
+#218 OBJECTID convInt
+#218 '('
+#218 OBJECTID input_string
+#218 '.'
+#218 OBJECTID substr
+#218 '('
+#218 OBJECTID i
+#218 ','
+#218 INT_CONST 1
+#218 ')'
+#218 ')'
+#218 ';'
+#219 OBJECTID i
+#219 ASSIGN
+#219 OBJECTID i
+#219 '+'
+#219 INT_CONST 1
+#219 ';'
+#220 '}'
+#221 POOL
+#221 ';'
+#222 OBJECTID result
+#222 ';'
+#223 '}'
+#224 '}'
+#224 ';'
+#227 OBJECTID convInt
+#227 '('
+#227 OBJECTID input
+#227 ':'
+#227 TYPEID String
+#227 ')'
+#227 ':'
+#227 TYPEID Int
+#227 '{'
+#228 LET
+#228 OBJECTID result
+#228 ':'
+#228 TYPEID Int
+#228 ASSIGN
+#228 INT_CONST 0
+#228 IN
+#229 '{'
+#230 IF
+#230 OBJECTID input
+#230 '='
+#230 STR_CONST "1"
+#230 THEN
+#230 OBJECTID result
+#230 ASSIGN
+#230 INT_CONST 1
+#230 ELSE
+#231 IF
+#231 OBJECTID input
+#231 '='
+#231 STR_CONST "2"
+#231 THEN
+#231 OBJECTID result
+#231 ASSIGN
+#231 INT_CONST 2
+#231 ELSE
+#232 IF
+#232 OBJECTID input
+#232 '='
+#232 STR_CONST "3"
+#232 THEN
+#232 OBJECTID result
+#232 ASSIGN
+#232 INT_CONST 3
+#232 ELSE
+#233 IF
+#233 OBJECTID input
+#233 '='
+#233 STR_CONST "4"
+#233 THEN
+#233 OBJECTID result
+#233 ASSIGN
+#233 INT_CONST 4
+#233 ELSE
+#234 IF
+#234 OBJECTID input
+#234 '='
+#234 STR_CONST "5"
+#234 THEN
+#234 OBJECTID result
+#234 ASSIGN
+#234 INT_CONST 5
+#234 ELSE
+#235 IF
+#235 OBJECTID input
+#235 '='
+#235 STR_CONST "6"
+#235 THEN
+#235 OBJECTID result
+#235 ASSIGN
+#235 INT_CONST 6
+#235 ELSE
+#236 IF
+#236 OBJECTID input
+#236 '='
+#236 STR_CONST "7"
+#236 THEN
+#236 OBJECTID result
+#236 ASSIGN
+#236 INT_CONST 7
+#236 ELSE
+#237 IF
+#237 OBJECTID input
+#237 '='
+#237 STR_CONST "8"
+#237 THEN
+#237 OBJECTID result
+#237 ASSIGN
+#237 INT_CONST 8
+#237 ELSE
+#238 IF
+#238 OBJECTID input
+#238 '='
+#238 STR_CONST "9"
+#238 THEN
+#238 OBJECTID result
+#238 ASSIGN
+#238 INT_CONST 9
+#238 ELSE
+#239 OBJECTID result
+#239 ASSIGN
+#239 INT_CONST 0
+#240 FI
+#240 FI
+#240 FI
+#240 FI
+#240 FI
+#240 FI
+#240 FI
+#240 FI
+#240 FI
+#240 ';'
+#241 OBJECTID result
+#241 ';'
+#242 '}'
+#243 '}'
+#243 ';'
+#246 OBJECTID setValue
+#246 '('
+#246 OBJECTID input_string
+#246 ':'
+#246 TYPEID String
+#246 ')'
+#246 ':'
+#246 TYPEID SELF_TYPE
+#246 '{'
+#247 '{'
+#248 OBJECTID setDefault
+#248 '('
+#248 ')'
+#248 ';'
+#249 IF
+#249 OBJECTID checkValid
+#249 '('
+#249 OBJECTID input_string
+#249 ')'
+#250 THEN
+#250 OBJECTID parse
+#250 '('
+#250 OBJECTID input_string
+#250 ')'
+#251 ELSE
+#251 BOOL_CONST false
+#252 FI
+#252 ';'
+#253 OBJECTID self
+#253 ';'
+#254 '}'
+#255 '}'
+#255 ';'
+#258 OBJECTID isDigit
+#258 '('
+#258 OBJECTID input_string
+#258 ':'
+#258 TYPEID String
+#258 ','
+#258 OBJECTID index
+#258 ':'
+#258 TYPEID Int
+#258 ')'
+#258 ':'
+#258 TYPEID Bool
+#258 '{'
+#259 LET
+#259 OBJECTID result
+#259 ':'
+#259 TYPEID Int
+#259 ASSIGN
+#259 INT_CONST 0
+#259 ','
+#259 OBJECTID input
+#259 ':'
+#259 TYPEID String
+#259 ASSIGN
+#259 STR_CONST ""
+#259 IN
+#260 '{'
+#261 OBJECTID input
+#261 ASSIGN
+#261 OBJECTID input_string
+#261 '.'
+#261 OBJECTID substr
+#261 '('
+#261 OBJECTID index
+#261 ','
+#261 INT_CONST 1
+#261 ')'
+#261 ';'
+#262 IF
+#262 OBJECTID input
+#262 '='
+#262 STR_CONST "0"
+#262 THEN
+#262 BOOL_CONST true
+#262 ELSE
+#263 IF
+#263 OBJECTID input
+#263 '='
+#263 STR_CONST "1"
+#263 THEN
+#263 BOOL_CONST true
+#263 ELSE
+#264 IF
+#264 OBJECTID input
+#264 '='
+#264 STR_CONST "2"
+#264 THEN
+#264 BOOL_CONST true
+#264 ELSE
+#265 IF
+#265 OBJECTID input
+#265 '='
+#265 STR_CONST "3"
+#265 THEN
+#265 BOOL_CONST true
+#265 ELSE
+#266 IF
+#266 OBJECTID input
+#266 '='
+#266 STR_CONST "4"
+#266 THEN
+#266 BOOL_CONST true
+#266 ELSE
+#267 IF
+#267 OBJECTID input
+#267 '='
+#267 STR_CONST "5"
+#267 THEN
+#267 BOOL_CONST true
+#267 ELSE
+#268 IF
+#268 OBJECTID input
+#268 '='
+#268 STR_CONST "6"
+#268 THEN
+#268 BOOL_CONST true
+#268 ELSE
+#269 IF
+#269 OBJECTID input
+#269 '='
+#269 STR_CONST "7"
+#269 THEN
+#269 BOOL_CONST true
+#269 ELSE
+#270 IF
+#270 OBJECTID input
+#270 '='
+#270 STR_CONST "8"
+#270 THEN
+#270 BOOL_CONST true
+#270 ELSE
+#271 IF
+#271 OBJECTID input
+#271 '='
+#271 STR_CONST "9"
+#271 THEN
+#271 BOOL_CONST true
+#271 ELSE
+#272 BOOL_CONST false
+#273 FI
+#273 FI
+#273 FI
+#273 FI
+#273 FI
+#273 FI
+#273 FI
+#273 FI
+#273 FI
+#273 FI
+#273 ';'
+#274 '}'
+#275 '}'
+#275 ';'
+#278 OBJECTID length
+#278 '('
+#278 OBJECTID temp_integer
+#278 ':'
+#278 TYPEID Int
+#278 ')'
+#278 ':'
+#278 TYPEID Int
+#278 '{'
+#279 LET
+#279 OBJECTID i
+#279 ':'
+#279 TYPEID Int
+#279 ASSIGN
+#279 INT_CONST 0
+#279 IN
+#280 '{'
+#281 IF
+#281 OBJECTID temp_integer
+#281 '='
+#281 INT_CONST 0
+#282 THEN
+#282 INT_CONST 1
+#283 ELSE
+#284 '{'
+#285 WHILE
+#285 INT_CONST 0
+#285 '<'
+#285 OBJECTID temp_integer
+#286 LOOP
+#287 '{'
+#288 OBJECTID temp_integer
+#288 ASSIGN
+#288 OBJECTID temp_integer
+#288 '/'
+#288 INT_CONST 10
+#288 ';'
+#289 OBJECTID i
+#289 ASSIGN
+#289 OBJECTID i
+#289 '+'
+#289 INT_CONST 1
+#289 ';'
+#290 '}'
+#291 POOL
+#291 ';'
+#292 OBJECTID i
+#292 ';'
+#293 '}'
+#294 FI
+#294 ';'
+#295 '}'
+#296 '}'
+#296 ';'
+#299 OBJECTID getInteger
+#299 '('
+#299 ')'
+#299 ':'
+#299 TYPEID Int
+#299 '{'
+#300 OBJECTID integer
+#301 '}'
+#301 ';'
+#304 OBJECTID getFraction
+#304 '('
+#304 ')'
+#304 ':'
+#304 TYPEID Int
+#304 '{'
+#305 OBJECTID fraction
+#306 '}'
+#306 ';'
+#309 OBJECTID setInteger
+#309 '('
+#309 OBJECTID input
+#309 ':'
+#309 TYPEID Int
+#309 ')'
+#309 ':'
+#309 TYPEID Int
+#309 '{'
+#310 OBJECTID integer
+#310 ASSIGN
+#310 OBJECTID input
+#311 '}'
+#311 ';'
+#314 OBJECTID setFraction
+#314 '('
+#314 OBJECTID input
+#314 ':'
+#314 TYPEID Int
+#314 ')'
+#314 ':'
+#314 TYPEID Int
+#314 '{'
+#315 OBJECTID fraction
+#315 ASSIGN
+#315 OBJECTID input
+#316 '}'
+#316 ';'
+#319 OBJECTID getSign
+#319 '('
+#319 ')'
+#319 ':'
+#319 TYPEID Bool
+#319 '{'
+#320 '{'
+#321 IF
+#321 OBJECTID integer
+#321 '='
+#321 INT_CONST 0
+#322 THEN
+#323 '{'
+#324 IF
+#324 OBJECTID fraction
+#324 '='
+#324 INT_CONST 0
+#325 THEN
+#325 BOOL_CONST true
+#326 ELSE
+#326 OBJECTID sign
+#327 FI
+#327 ';'
+#328 '}'
+#329 ELSE
+#329 OBJECTID sign
+#330 FI
+#330 ';'
+#331 '}'
+#332 '}'
+#332 ';'
+#335 OBJECTID setSign
+#335 '('
+#335 OBJECTID input
+#335 ':'
+#335 TYPEID Bool
+#335 ')'
+#335 ':'
+#335 TYPEID Bool
+#335 '{'
+#336 OBJECTID sign
+#336 ASSIGN
+#336 OBJECTID input
+#337 '}'
+#337 ';'
+#340 OBJECTID getPadding
+#340 '('
+#340 ')'
+#340 ':'
+#340 TYPEID Int
+#340 '{'
+#341 OBJECTID padding
+#342 '}'
+#342 ';'
+#345 OBJECTID setPadding
+#345 '('
+#345 OBJECTID input
+#345 ':'
+#345 TYPEID Int
+#345 ')'
+#345 ':'
+#345 TYPEID Int
+#345 '{'
+#346 OBJECTID padding
+#346 ASSIGN
+#346 OBJECTID input
+#347 '}'
+#347 ';'
+#350 OBJECTID abs
+#350 '('
+#350 OBJECTID first
+#350 ':'
+#350 TYPEID Int
+#350 ','
+#350 OBJECTID second
+#350 ':'
+#350 TYPEID Int
+#350 ')'
+#350 ':'
+#350 TYPEID Int
+#350 '{'
+#351 '{'
+#352 IF
+#352 OBJECTID first
+#352 '<'
+#352 OBJECTID second
+#353 THEN
+#353 OBJECTID second
+#353 '-'
+#353 OBJECTID first
+#354 ELSE
+#354 OBJECTID first
+#354 '-'
+#354 OBJECTID second
+#355 FI
+#355 ';'
+#356 '}'
+#357 '}'
+#357 ';'
+#360 OBJECTID lessThan
+#360 '('
+#360 OBJECTID other
+#360 ':'
+#360 TYPEID Float
+#360 ')'
+#360 ':'
+#360 TYPEID Bool
+#360 '{'
+#361 LET
+#361 OBJECTID result
+#361 ':'
+#361 TYPEID Bool
+#361 ','
+#361 OBJECTID temp_int
+#361 ':'
+#361 TYPEID Int
+#361 IN
+#362 '{'
+#363 IF
+#363 OBJECTID sign
+#363 '='
+#363 BOOL_CONST true
+#364 THEN
+#365 '{'
+#366 IF
+#366 OBJECTID other
+#366 '.'
+#366 OBJECTID getSign
+#366 '('
+#366 ')'
+#366 '='
+#366 BOOL_CONST false
+#367 THEN
+#367 OBJECTID result
+#367 ASSIGN
+#367 BOOL_CONST false
+#368 ELSE
+#369 '{'
+#370 IF
+#370 OBJECTID integer
+#370 '<'
+#370 OBJECTID other
+#370 '.'
+#370 OBJECTID getInteger
+#370 '('
+#370 ')'
+#371 THEN
+#371 OBJECTID result
+#371 ASSIGN
+#371 BOOL_CONST true
+#372 ELSE
+#372 IF
+#372 OBJECTID other
+#372 '.'
+#372 OBJECTID getInteger
+#372 '('
+#372 ')'
+#372 '<'
+#372 OBJECTID integer
+#373 THEN
+#373 OBJECTID result
+#373 ASSIGN
+#373 BOOL_CONST false
+#374 ELSE
+#375 '{'
+#376 IF
+#376 OBJECTID length
+#376 '('
+#376 OBJECTID fraction
+#376 ')'
+#376 '='
+#376 OBJECTID length
+#376 '('
+#376 OBJECTID other
+#376 '.'
+#376 OBJECTID getFraction
+#376 '('
+#376 ')'
+#376 ')'
+#377 THEN
+#377 OBJECTID result
+#377 ASSIGN
+#377 OBJECTID fraction
+#377 '<'
+#377 OBJECTID other
+#377 '.'
+#377 OBJECTID getFraction
+#377 '('
+#377 ')'
+#378 ELSE
+#378 IF
+#378 OBJECTID length
+#378 '('
+#378 OBJECTID fraction
+#378 ')'
+#378 '<'
+#378 OBJECTID length
+#378 '('
+#378 OBJECTID other
+#378 '.'
+#378 OBJECTID getFraction
+#378 '('
+#378 ')'
+#378 ')'
+#379 THEN
+#380 '{'
+#381 OBJECTID temp_int
+#381 ASSIGN
+#381 OBJECTID other
+#381 '.'
+#381 OBJECTID getFraction
+#381 '('
+#381 ')'
+#381 '/'
+#381 OBJECTID power
+#381 '('
+#381 INT_CONST 10
+#381 ','
+#381 OBJECTID length
+#381 '('
+#381 OBJECTID other
+#381 '.'
+#381 OBJECTID getFraction
+#381 '('
+#381 ')'
+#381 ')'
+#381 '-'
+#381 OBJECTID length
+#381 '('
+#381 OBJECTID fraction
+#381 ')'
+#381 ')'
+#381 ';'
+#382 IF
+#382 OBJECTID fraction
+#382 LE
+#382 OBJECTID temp_int
+#383 THEN
+#383 OBJECTID result
+#383 ASSIGN
+#383 BOOL_CONST true
+#384 ELSE
+#384 OBJECTID result
+#384 ASSIGN
+#384 BOOL_CONST false
+#385 FI
+#385 ';'
+#386 '}'
+#387 ELSE
+#388 '{'
+#389 OBJECTID temp_int
+#389 ASSIGN
+#389 OBJECTID fraction
+#389 '/'
+#389 OBJECTID power
+#389 '('
+#389 INT_CONST 10
+#389 ','
+#389 OBJECTID length
+#389 '('
+#389 OBJECTID other
+#389 '.'
+#389 OBJECTID getFraction
+#389 '('
+#389 ')'
+#389 ')'
+#389 '-'
+#389 OBJECTID length
+#389 '('
+#389 OBJECTID fraction
+#389 ')'
+#389 ')'
+#389 ';'
+#390 IF
+#390 OBJECTID other
+#390 '.'
+#390 OBJECTID getFraction
+#390 '('
+#390 ')'
+#390 LE
+#390 OBJECTID temp_int
+#391 THEN
+#391 OBJECTID result
+#391 ASSIGN
+#391 BOOL_CONST false
+#392 ELSE
+#392 OBJECTID result
+#392 ASSIGN
+#392 BOOL_CONST true
+#393 FI
+#393 ';'
+#394 '}'
+#395 FI
+#395 FI
+#395 ';'
+#396 '}'
+#397 FI
+#397 FI
+#397 ';'
+#398 '}'
+#399 FI
+#399 ';'
+#400 '}'
+#401 ELSE
+#402 '{'
+#403 IF
+#403 OBJECTID other
+#403 '.'
+#403 OBJECTID getSign
+#403 '('
+#403 ')'
+#403 '='
+#403 BOOL_CONST true
+#404 THEN
+#404 OBJECTID result
+#404 ASSIGN
+#404 BOOL_CONST true
+#405 ELSE
+#406 '{'
+#407 IF
+#407 OBJECTID integer
+#407 '<'
+#407 OBJECTID other
+#407 '.'
+#407 OBJECTID getInteger
+#407 '('
+#407 ')'
+#408 THEN
+#408 OBJECTID result
+#408 ASSIGN
+#408 BOOL_CONST false
+#409 ELSE
+#409 IF
+#409 OBJECTID other
+#409 '.'
+#409 OBJECTID getInteger
+#409 '('
+#409 ')'
+#409 '<'
+#409 OBJECTID integer
+#410 THEN
+#410 OBJECTID result
+#410 ASSIGN
+#410 BOOL_CONST true
+#411 ELSE
+#412 '{'
+#413 IF
+#413 OBJECTID length
+#413 '('
+#413 OBJECTID fraction
+#413 ')'
+#413 '='
+#413 OBJECTID length
+#413 '('
+#413 OBJECTID other
+#413 '.'
+#413 OBJECTID getFraction
+#413 '('
+#413 ')'
+#413 ')'
+#414 THEN
+#414 OBJECTID result
+#414 ASSIGN
+#414 OBJECTID fraction
+#414 '<'
+#414 OBJECTID other
+#414 '.'
+#414 OBJECTID getFraction
+#414 '('
+#414 ')'
+#415 ELSE
+#415 IF
+#415 OBJECTID length
+#415 '('
+#415 OBJECTID fraction
+#415 ')'
+#415 '<'
+#415 OBJECTID length
+#415 '('
+#415 OBJECTID other
+#415 '.'
+#415 OBJECTID getFraction
+#415 '('
+#415 ')'
+#415 ')'
+#416 THEN
+#417 '{'
+#418 OBJECTID temp_int
+#418 ASSIGN
+#418 OBJECTID other
+#418 '.'
+#418 OBJECTID getFraction
+#418 '('
+#418 ')'
+#418 '/'
+#418 OBJECTID power
+#418 '('
+#418 INT_CONST 10
+#418 ','
+#418 OBJECTID length
+#418 '('
+#418 OBJECTID other
+#418 '.'
+#418 OBJECTID getFraction
+#418 '('
+#418 ')'
+#418 ')'
+#418 '-'
+#418 OBJECTID length
+#418 '('
+#418 OBJECTID fraction
+#418 ')'
+#418 ')'
+#418 ';'
+#419 IF
+#419 OBJECTID fraction
+#419 LE
+#419 OBJECTID temp_int
+#420 THEN
+#420 OBJECTID result
+#420 ASSIGN
+#420 BOOL_CONST false
+#421 ELSE
+#421 OBJECTID result
+#421 ASSIGN
+#421 BOOL_CONST true
+#422 FI
+#422 ';'
+#423 '}'
+#424 ELSE
+#425 '{'
+#426 OBJECTID temp_int
+#426 ASSIGN
+#426 OBJECTID fraction
+#426 '/'
+#426 OBJECTID power
+#426 '('
+#426 INT_CONST 10
+#426 ','
+#426 OBJECTID length
+#426 '('
+#426 OBJECTID other
+#426 '.'
+#426 OBJECTID getFraction
+#426 '('
+#426 ')'
+#426 ')'
+#426 '-'
+#426 OBJECTID length
+#426 '('
+#426 OBJECTID fraction
+#426 ')'
+#426 ')'
+#426 ';'
+#427 IF
+#427 OBJECTID other
+#427 '.'
+#427 OBJECTID getFraction
+#427 '('
+#427 ')'
+#427 LE
+#427 OBJECTID temp_int
+#428 THEN
+#428 OBJECTID result
+#428 ASSIGN
+#428 BOOL_CONST true
+#429 ELSE
+#429 OBJECTID result
+#429 ASSIGN
+#429 BOOL_CONST false
+#430 FI
+#430 ';'
+#431 '}'
+#432 FI
+#432 FI
+#432 ';'
+#433 '}'
+#434 FI
+#434 FI
+#434 ';'
+#435 '}'
+#436 FI
+#436 ';'
+#437 '}'
+#438 FI
+#438 ';'
+#439 OBJECTID result
+#439 ';'
+#440 '}'
+#441 '}'
+#441 ';'
+#444 OBJECTID magnitudeLessThan
+#444 '('
+#444 OBJECTID other
+#444 ':'
+#444 TYPEID Float
+#444 ')'
+#444 ':'
+#444 TYPEID Bool
+#444 '{'
+#445 LET
+#445 OBJECTID result
+#445 ':'
+#445 TYPEID Bool
+#445 ','
+#445 OBJECTID temp_int
+#445 ':'
+#445 TYPEID Int
+#445 IN
+#446 '{'
+#447 IF
+#447 OBJECTID integer
+#447 '<'
+#447 OBJECTID other
+#447 '.'
+#447 OBJECTID getInteger
+#447 '('
+#447 ')'
+#448 THEN
+#448 OBJECTID result
+#448 ASSIGN
+#448 BOOL_CONST true
+#449 ELSE
+#449 IF
+#449 OBJECTID other
+#449 '.'
+#449 OBJECTID getInteger
+#449 '('
+#449 ')'
+#449 '<'
+#449 OBJECTID integer
+#450 THEN
+#450 OBJECTID result
+#450 ASSIGN
+#450 BOOL_CONST false
+#451 ELSE
+#452 '{'
+#453 IF
+#453 OBJECTID length
+#453 '('
+#453 OBJECTID fraction
+#453 ')'
+#453 '='
+#453 OBJECTID length
+#453 '('
+#453 OBJECTID other
+#453 '.'
+#453 OBJECTID getFraction
+#453 '('
+#453 ')'
+#453 ')'
+#454 THEN
+#454 OBJECTID result
+#454 ASSIGN
+#454 OBJECTID fraction
+#454 '<'
+#454 OBJECTID other
+#454 '.'
+#454 OBJECTID getFraction
+#454 '('
+#454 ')'
+#455 ELSE
+#455 IF
+#455 OBJECTID length
+#455 '('
+#455 OBJECTID fraction
+#455 ')'
+#455 '<'
+#455 OBJECTID length
+#455 '('
+#455 OBJECTID other
+#455 '.'
+#455 OBJECTID getFraction
+#455 '('
+#455 ')'
+#455 ')'
+#456 THEN
+#457 '{'
+#458 OBJECTID temp_int
+#458 ASSIGN
+#458 OBJECTID other
+#458 '.'
+#458 OBJECTID getFraction
+#458 '('
+#458 ')'
+#458 '/'
+#458 OBJECTID power
+#458 '('
+#458 INT_CONST 10
+#458 ','
+#458 OBJECTID length
+#458 '('
+#458 OBJECTID other
+#458 '.'
+#458 OBJECTID getFraction
+#458 '('
+#458 ')'
+#458 ')'
+#458 '-'
+#458 OBJECTID length
+#458 '('
+#458 OBJECTID fraction
+#458 ')'
+#458 ')'
+#458 ';'
+#459 IF
+#459 OBJECTID fraction
+#459 LE
+#459 OBJECTID temp_int
+#460 THEN
+#460 OBJECTID result
+#460 ASSIGN
+#460 BOOL_CONST true
+#461 ELSE
+#461 OBJECTID result
+#461 ASSIGN
+#461 BOOL_CONST false
+#462 FI
+#462 ';'
+#463 '}'
+#464 ELSE
+#465 '{'
+#466 OBJECTID temp_int
+#466 ASSIGN
+#466 OBJECTID fraction
+#466 '/'
+#466 OBJECTID power
+#466 '('
+#466 INT_CONST 10
+#466 ','
+#466 OBJECTID length
+#466 '('
+#466 OBJECTID other
+#466 '.'
+#466 OBJECTID getFraction
+#466 '('
+#466 ')'
+#466 ')'
+#466 '-'
+#466 OBJECTID length
+#466 '('
+#466 OBJECTID fraction
+#466 ')'
+#466 ')'
+#466 ';'
+#467 IF
+#467 OBJECTID other
+#467 '.'
+#467 OBJECTID getFraction
+#467 '('
+#467 ')'
+#467 LE
+#467 OBJECTID temp_int
+#468 THEN
+#468 OBJECTID result
+#468 ASSIGN
+#468 BOOL_CONST false
+#469 ELSE
+#469 OBJECTID result
+#469 ASSIGN
+#469 BOOL_CONST true
+#470 FI
+#470 ';'
+#471 '}'
+#472 FI
+#472 FI
+#472 ';'
+#473 '}'
+#474 FI
+#474 FI
+#474 ';'
+#475 OBJECTID result
+#475 ';'
+#476 '}'
+#477 '}'
+#477 ';'
+#480 OBJECTID add
+#480 '('
+#480 OBJECTID other
+#480 ':'
+#480 TYPEID Float
+#480 ')'
+#480 ':'
+#480 TYPEID Float
+#480 '{'
+#481 LET
+#481 OBJECTID i
+#481 ':'
+#481 TYPEID Int
+#481 ','
+#481 OBJECTID temp_other_fraction
+#481 ':'
+#481 TYPEID Int
+#481 ASSIGN
+#481 OBJECTID other
+#481 '.'
+#481 OBJECTID getFraction
+#481 '('
+#481 ')'
+#481 ','
+#481 OBJECTID result
+#481 ':'
+#481 TYPEID Float
+#481 ASSIGN
+#481 NEW
+#481 TYPEID Float
+#481 ','
+#482 OBJECTID temp_this_fraction
+#482 ':'
+#482 TYPEID Int
+#482 ASSIGN
+#482 OBJECTID fraction
+#482 IN
+#483 '{'
+#484 IF
+#484 OBJECTID sign
+#484 '='
+#484 OBJECTID other
+#484 '.'
+#484 OBJECTID getSign
+#484 '('
+#484 ')'
+#485 THEN
+#486 '{'
+#487 OBJECTID result
+#487 '.'
+#487 OBJECTID setInteger
+#487 '('
+#487 OBJECTID integer
+#487 '+'
+#487 OBJECTID other
+#487 '.'
+#487 OBJECTID getInteger
+#487 '('
+#487 ')'
+#487 ')'
+#487 ';'
+#488 IF
+#488 OBJECTID length
+#488 '('
+#488 OBJECTID fraction
+#488 ')'
+#488 '<'
+#488 OBJECTID length
+#488 '('
+#488 OBJECTID other
+#488 '.'
+#488 OBJECTID getFraction
+#488 '('
+#488 ')'
+#488 ')'
+#489 THEN
+#490 '{'
+#491 OBJECTID i
+#491 ASSIGN
+#491 INT_CONST 0
+#491 ';'
+#492 WHILE
+#492 OBJECTID i
+#492 '<'
+#492 OBJECTID length
+#492 '('
+#492 OBJECTID other
+#492 '.'
+#492 OBJECTID getFraction
+#492 '('
+#492 ')'
+#492 ')'
+#492 '-'
+#492 OBJECTID length
+#492 '('
+#492 OBJECTID fraction
+#492 ')'
+#493 LOOP
+#494 '{'
+#495 OBJECTID temp_this_fraction
+#495 ASSIGN
+#495 OBJECTID temp_this_fraction
+#495 '*'
+#495 INT_CONST 10
+#495 ';'
+#496 OBJECTID i
+#496 ASSIGN
+#496 OBJECTID i
+#496 '+'
+#496 INT_CONST 1
+#496 ';'
+#497 '}'
+#498 POOL
+#498 ';'
+#499 '}'
+#500 ELSE
+#500 IF
+#500 OBJECTID length
+#500 '('
+#500 OBJECTID other
+#500 '.'
+#500 OBJECTID getFraction
+#500 '('
+#500 ')'
+#500 ')'
+#500 '<'
+#500 OBJECTID length
+#500 '('
+#500 OBJECTID fraction
+#500 ')'
+#501 THEN
+#502 '{'
+#503 OBJECTID i
+#503 ASSIGN
+#503 INT_CONST 0
+#503 ';'
+#504 WHILE
+#504 OBJECTID i
+#504 '<'
+#504 OBJECTID length
+#504 '('
+#504 OBJECTID fraction
+#504 ')'
+#504 '-'
+#504 OBJECTID length
+#504 '('
+#504 OBJECTID other
+#504 '.'
+#504 OBJECTID getFraction
+#504 '('
+#504 ')'
+#504 ')'
+#505 LOOP
+#506 '{'
+#507 OBJECTID temp_other_fraction
+#507 ASSIGN
+#507 OBJECTID temp_other_fraction
+#507 '*'
+#507 INT_CONST 10
+#507 ';'
+#508 OBJECTID i
+#508 ASSIGN
+#508 OBJECTID i
+#508 '+'
+#508 INT_CONST 1
+#508 ';'
+#509 '}'
+#510 POOL
+#510 ';'
+#511 '}'
+#512 ELSE
+#512 BOOL_CONST false
+#513 FI
+#513 FI
+#513 ';'
+#514 IF
+#514 OBJECTID length
+#514 '('
+#514 OBJECTID temp_other_fraction
+#514 ')'
+#514 '<'
+#514 OBJECTID length
+#514 '('
+#514 OBJECTID temp_this_fraction
+#514 '+'
+#514 OBJECTID temp_other_fraction
+#514 ')'
+#515 THEN
+#516 '{'
+#517 OBJECTID result
+#517 '.'
+#517 OBJECTID setFraction
+#517 '('
+#517 OBJECTID modulo
+#517 '('
+#517 OBJECTID temp_this_fraction
+#517 '+'
+#517 OBJECTID temp_other_fraction
+#517 ','
+#517 OBJECTID power
+#517 '('
+#517 INT_CONST 10
+#517 ','
+#517 OBJECTID length
+#517 '('
+#517 OBJECTID temp_this_fraction
+#517 ')'
+#517 ')'
+#517 ')'
+#517 ')'
+#517 ';'
+#518 OBJECTID result
+#518 '.'
+#518 OBJECTID setInteger
+#518 '('
+#518 OBJECTID result
+#518 '.'
+#518 OBJECTID getInteger
+#518 '('
+#518 ')'
+#518 '+'
+#518 '('
+#518 OBJECTID temp_this_fraction
+#518 '+'
+#518 OBJECTID temp_other_fraction
+#518 ')'
+#518 '/'
+#518 OBJECTID power
+#518 '('
+#518 INT_CONST 10
+#518 ','
+#518 OBJECTID length
+#518 '('
+#518 OBJECTID temp_this_fraction
+#518 ')'
+#518 ')'
+#518 ')'
+#518 ';'
+#519 '}'
+#520 ELSE
+#521 '{'
+#522 OBJECTID result
+#522 '.'
+#522 OBJECTID setFraction
+#522 '('
+#522 OBJECTID temp_this_fraction
+#522 '+'
+#522 OBJECTID temp_other_fraction
+#522 ')'
+#522 ';'
+#523 '}'
+#524 FI
+#524 ';'
+#525 OBJECTID result
+#525 '.'
+#525 OBJECTID setSign
+#525 '('
+#525 OBJECTID getSign
+#525 '('
+#525 ')'
+#525 ')'
+#525 ';'
+#526 OBJECTID result
+#526 ';'
+#527 '}'
+#528 ELSE
+#528 BOOL_CONST false
+#529 FI
+#529 ';'
+#530 OBJECTID result
+#530 ';'
+#531 '}'
+#532 '}'
+#532 ';'
+#535 OBJECTID equals
+#535 '('
+#535 OBJECTID other
+#535 ':'
+#535 TYPEID Float
+#535 ')'
+#535 ':'
+#535 TYPEID Bool
+#535 '{'
+#536 '{'
+#537 IF
+#537 OBJECTID sign
+#537 '='
+#537 OBJECTID other
+#537 '.'
+#537 OBJECTID getSign
+#537 '('
+#537 ')'
+#538 THEN
+#539 '{'
+#540 IF
+#540 OBJECTID integer
+#540 '='
+#540 OBJECTID other
+#540 '.'
+#540 OBJECTID getInteger
+#540 '('
+#540 ')'
+#541 THEN
+#542 '{'
+#543 IF
+#543 OBJECTID fraction
+#543 '='
+#543 OBJECTID other
+#543 '.'
+#543 OBJECTID getFraction
+#543 '('
+#543 ')'
+#544 THEN
+#544 BOOL_CONST true
+#545 ELSE
+#545 BOOL_CONST false
+#546 FI
+#546 ';'
+#547 '}'
+#548 ELSE
+#548 BOOL_CONST false
+#549 FI
+#549 ';'
+#550 '}'
+#551 ELSE
+#551 BOOL_CONST false
+#552 FI
+#552 ';'
+#553 '}'
+#554 '}'
+#554 ';'
+#557 OBJECTID power
+#557 '('
+#557 OBJECTID base
+#557 ':'
+#557 TYPEID Int
+#557 ','
+#557 OBJECTID exponent
+#557 ':'
+#557 TYPEID Int
+#557 ')'
+#557 ':'
+#557 TYPEID Int
+#557 '{'
+#558 LET
+#558 OBJECTID i
+#558 ':'
+#558 TYPEID Int
+#558 ASSIGN
+#558 INT_CONST 0
+#558 ','
+#558 OBJECTID result
+#558 ':'
+#558 TYPEID Int
+#558 ASSIGN
+#558 INT_CONST 1
+#558 IN
+#559 '{'
+#560 IF
+#560 OBJECTID exponent
+#560 '='
+#560 INT_CONST 0
+#561 THEN
+#561 INT_CONST 1
+#562 ELSE
+#563 '{'
+#564 WHILE
+#564 OBJECTID i
+#564 '<'
+#564 OBJECTID exponent
+#565 LOOP
+#566 '{'
+#567 OBJECTID result
+#567 ASSIGN
+#567 OBJECTID result
+#567 '*'
+#567 OBJECTID base
+#567 ';'
+#568 '}'
+#569 POOL
+#569 ';'
+#570 OBJECTID base
+#570 ';'
+#571 '}'
+#572 FI
+#572 ';'
+#573 '}'
+#574 '}'
+#574 ';'
+#575 '}'
+#575 ';'
+#577 CLASS
+#577 TYPEID Main
+#577 INHERITS
+#577 TYPEID IO
+#577 '{'
+#578 OBJECTID test_string_first
+#578 ':'
+#578 TYPEID String
+#578 ';'
+#579 OBJECTID test_string_second
+#579 ':'
+#579 TYPEID String
+#579 ';'
+#580 OBJECTID test_float_first
+#580 ':'
+#580 TYPEID Float
+#580 ASSIGN
+#580 NEW
+#580 TYPEID Float
+#580 ';'
+#581 OBJECTID test_float_second
+#581 ':'
+#581 TYPEID Float
+#581 ASSIGN
+#581 NEW
+#581 TYPEID Float
+#581 ';'
+#582 OBJECTID test_float_result
+#582 ':'
+#582 TYPEID Float
+#582 ';'
+#583 OBJECTID main
+#583 '('
+#583 ')'
+#583 ':'
+#583 TYPEID Object
+#583 '{'
+#584 '{'
+#585 OBJECTID out_string
+#585 '('
+#585 STR_CONST "Enter two float numbers : \n"
+#585 ')'
+#585 ';'
+#586 OBJECTID test_string_first
+#586 ASSIGN
+#586 OBJECTID in_string
+#586 '('
+#586 ')'
+#586 ';'
+#587 OBJECTID test_float_first
+#587 '.'
+#587 OBJECTID setValue
+#587 '('
+#587 OBJECTID test_string_first
+#587 ')'
+#587 ';'
+#588 OBJECTID out_string
+#588 '('
+#588 STR_CONST "The first number is : "
+#588 '.'
+#588 OBJECTID concat
+#588 '('
+#588 OBJECTID test_float_first
+#588 '.'
+#588 OBJECTID display
+#588 '('
+#588 ')'
+#588 ')'
+#588 '.'
+#588 OBJECTID concat
+#588 '('
+#588 STR_CONST "\n"
+#588 ')'
+#588 ')'
+#588 ';'
+#589 OBJECTID test_string_second
+#589 ASSIGN
+#589 OBJECTID in_string
+#589 '('
+#589 ')'
+#589 ';'
+#590 OBJECTID test_float_second
+#590 '.'
+#590 OBJECTID setValue
+#590 '('
+#590 OBJECTID test_string_second
+#590 ')'
+#590 ';'
+#591 OBJECTID out_string
+#591 '('
+#591 STR_CONST "The second number is : "
+#591 '.'
+#591 OBJECTID concat
+#591 '('
+#591 OBJECTID test_float_second
+#591 '.'
+#591 OBJECTID display
+#591 '('
+#591 ')'
+#591 ')'
+#591 '.'
+#591 OBJECTID concat
+#591 '('
+#591 STR_CONST "\n"
+#591 ')'
+#591 ')'
+#591 ';'
+#592 IF
+#592 OBJECTID test_float_first
+#592 '.'
+#592 OBJECTID getSign
+#592 '('
+#592 ')'
+#592 '='
+#592 OBJECTID test_float_second
+#592 '.'
+#592 OBJECTID getSign
+#592 '('
+#592 ')'
+#593 THEN
+#594 '{'
+#595 IF
+#595 OBJECTID test_float_first
+#595 '.'
+#595 OBJECTID getPadding
+#595 '('
+#595 ')'
+#595 '='
+#595 INT_CONST 0
+#596 THEN
+#597 '{'
+#598 IF
+#598 OBJECTID test_float_second
+#598 '.'
+#598 OBJECTID getPadding
+#598 '('
+#598 ')'
+#598 '='
+#598 INT_CONST 0
+#599 THEN
+#600 '{'
+#601 OBJECTID test_float_result
+#601 ASSIGN
+#601 OBJECTID test_float_first
+#601 '.'
+#601 OBJECTID add
+#601 '('
+#601 OBJECTID test_float_second
+#601 ')'
+#601 ';'
+#602 OBJECTID out_string
+#602 '('
+#602 STR_CONST "The sum is : "
+#602 '.'
+#602 OBJECTID concat
+#602 '('
+#602 OBJECTID test_float_result
+#602 '.'
+#602 OBJECTID display
+#602 '('
+#602 ')'
+#602 ')'
+#602 '.'
+#602 OBJECTID concat
+#602 '('
+#602 STR_CONST "\n"
+#602 ')'
+#602 ')'
+#602 ';'
+#603 '}'
+#604 ELSE
+#605 '{'
+#606 OBJECTID out_string
+#606 '('
+#606 STR_CONST "Non-zero padding not supported!\n"
+#606 ')'
+#606 ';'
+#607 '}'
+#608 FI
+#608 ';'
+#609 '}'
+#610 ELSE
+#610 OBJECTID out_string
+#610 '('
+#610 STR_CONST "Non-zero padding not supported!\n"
+#610 ')'
+#611 FI
+#611 ';'
+#612 '}'
+#613 ELSE
+#614 '{'
+#615 OBJECTID out_string
+#615 '('
+#615 STR_CONST "Addition not supported if signs are opposite or one of the numbers is 0\n"
+#615 ')'
+#615 ';'
+#616 '}'
+#617 FI
+#617 ';'
+#618 OBJECTID self
+#618 ';'
+#619 '}'
+#620 '}'
+#620 ';'
+#621 '}'
+#621 ';'
