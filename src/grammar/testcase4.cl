@@ -1,3 +1,4 @@
+-- Test section 10.4
 Class cLaSs class CLASS 
 elSe 
 ElsE 

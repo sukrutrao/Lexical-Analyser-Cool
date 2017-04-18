@@ -22,7 +22,7 @@ This is used to report errors when a character that cannot be the start of any v
 * Whitespace is defined as per Section 10.5 of the Cool Manual. Any of `'\n'`, `'\t'`, `'\f'`, `'\r'`, `'\v'` and `' '` is taken to be a white space. These characters are read and skipped, as they correspond to no token. As ANTLR does not recognize `'\v'`, its unicode value, `'\u000b'` has been used.
 * A STRAY_COMMENT rule has been defined to consume any unmatched comment ending, `*)`, and give an error.
 * A SINGLE_LINE_COMMENT rule has been defined for single line comments, `--`. This consumes all characters till newline is reached, and if not, if EOF is reached.
-* An INCORRECT_CHARACTERS rule has been defined to report errors for all characters that cannot start a valid token. The `processCharacter()` function is called.
+* An INCORRECT_CHARACTERS rule has been defined to report errors for all characters that cannot start a valid token. The `processCharacter()` function is called. This is at the end so as to give it last preference, and so that it doesn't take the place of valid tokens.
 
 #### Handling Strings
 * The beginning of a string is first read by the rule STR_START, when a `'"'` is encountered. It skips this character and pushes the mode `STRING_MODE`.
@@ -39,3 +39,42 @@ This is used to report errors when a character that cannot be the start of any v
 * The COMMENT_END rule skips a `*)` and pops out one level up from this mode.
 * The EOF_F rule checks if we have reached an EOF inside a comment. If so, an error is reported and we jump back to the default mode.
 * The ANYTHING consumes all other characters and skips them, as is expected in comments, one character at a time.
+
+### The Test Cases
+* There are five main test cases. Each test case checks the conditions given in a subsection of Section 10 of the Cool Manual.
+
+#### testcase1.cl
+* Here, Section 10.1 has been tested.
+* There are tests for integer constants, object identifiers, and type identifiers.
+* It is also tested that an integer cannot contain alphabets or underscore.
+* The test also checks if the symbols, such as `{},()-+` etc. are read correctly.
+
+#### testcase2.cl
+* Here, Section 10.2 has been tested.
+* Valid strings have been entered to check if they are read correctly.
+* The next line checks whether escaping happens correctly. It can be seen from the output that only b,n,t,f which follow a backslash are modified to give special characters, the rest of the backslashes are removed.
+* Line 4 demonstrates that a wide variety of characters can be printed.
+* Line 5 and 6 demonstrate a string containing an escaped newline.
+* Line 7 and 8 demonstrate that an error is given if a string is split between lines without being escaped.
+* Line 10 shows that a 1024 character string is accepted.
+* Line 12 shows that a 1025 character string gives an error.
+* Line 13 shows that a string containing EOF causes an error.
+
+#### testcase3.cl
+* Here, Section 10.3 has been tested.
+* Lines 2 and 3 consist of a block comment, and it has been tested that many characters can be written inside them, and that they are ignored.
+* Line 4 demonstrates a single line comment
+* Line 5 shows nesting of comments, which passes through the lexical analyzer successfully.
+* Line 6 shows that if extra `*)` is found, an error is given.
+* Line 7 shows that if all comments are not closed, i.e., if a comment contains EOF, then an error is given.
+
+#### testcase4.cl
+* Here, Section 10.4 has been tested.
+* The file contains all the keywords, and attempts to demonstrate their case insensivity by showing that their tokens are the same.
+* This also shows that `True` and `true` are different, similarly for `false`, the first being a type id and the second being a bool constant.
+
+#### testcase5.cl
+* Here, Section 10.5 has been tested.
+* This tests for all whitespace characters, `'\n'`, `'\f'`, `'\r'`, `'\t'`,`'\v'`, and `' '`.
+* As expected, all of these are ignored.
+* From Section 10.

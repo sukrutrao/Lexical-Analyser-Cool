@@ -1,5 +1,6 @@
+-- Test section 10.2
 "This is a string"
-"\a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z\""
+"\a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z\"\$\#\%"
 "A string can contain almost anything 1 2 3 @ # $ % ^ & * ( ) { } (* -- *) ; : ' , >> ? "
 "This is an example of an \
 escaped newline"
