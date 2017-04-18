@@ -77,4 +77,5 @@ This is used to report errors when a character that cannot be the start of any v
 * Here, Section 10.5 has been tested.
 * This tests for all whitespace characters, `'\n'`, `'\f'`, `'\r'`, `'\t'`,`'\v'`, and `' '`.
 * As expected, all of these are ignored.
-* From Section 10.
+* From Section 10.2, it has also been tested that a string containing a null character gives an error. Moreover, when a newline is encountered after the error, it has been tested that lexical analysis resumes from the new line, and it is not treated as a part of the existing string.
+* From Section 10.3, it is also checked that a single line comment ending with an EOF is valid.
