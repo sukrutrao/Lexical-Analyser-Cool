@@ -68,6 +68,17 @@ tokens{
 	public void processString() {
 		Token t = _factory.create(_tokenFactorySourcePair, _type, _text, _channel, _tokenStartCharIndex, getCharIndex()-1, _tokenStartLine, _tokenStartCharPositionInLine);
 		String text = t.getText();
+		text = text.substring(0,text.length()-1);
+		if(text.length() > 1024)
+		{
+			reportError("String constant too long");
+			return;
+		}
+		if(text.indexOf('\0') != -1)
+		{
+			reportError("String contains null character");
+			return;
+		}
 		String escape_chars = "btnf";
 		String escape_chars_results = "\b\t\n\f";
 		int index = text.indexOf('\\');
@@ -85,6 +96,18 @@ tokens{
 		setText(text);
 		setType(STR_CONST);		
 		//write your code to test strings here
+	}
+
+	public void processCharacter() {
+		Token t = _factory.create(_tokenFactorySourcePair, _type, _text, _channel, _tokenStartCharIndex, getCharIndex()-1, _tokenStartLine, _tokenStartCharPositionInLine);
+		String text = t.getText();
+		reportError(text);
+	}
+
+	public void parseComment() {
+		Token t = _factory.create(_tokenFactorySourcePair, _type, _text, _channel, _tokenStartCharIndex, getCharIndex()-1, _tokenStartLine, _tokenStartCharPositionInLine);
+		String text = t.getText();
+		skip();
 	}
 }
 
@@ -115,6 +138,11 @@ BOOL_CONST	: 't'[Rr][Uu][Ee] | 'f'[Aa][Ll][Ss][Ee] ;
 TYPEID		: [A-Z][a-z|A-Z|0-9|_]* ;
 OBJECTID	: [a-z][a-z|A-Z|0-9|_]* ;
 INT_CONST	: [0-9]+ ;
+/*OPEN_COMMENT	: '(*'(BLOCK_COMMENT | ~('*' | '(') | '*'~(')') | '('~('*') )*EOF {reportError("EOF in comment");} -> more;
+BLOCK_COMMENT	: '(*'(BLOCK_COMMENT | ~('*' | '(') | '*'~(')') | '('~('*') )*'*)' -> skip;*/
+
+STRAY_COMMENT	: '*)' {reportError("Unmatched *)");};
+
 LPAREN		: '(' ;
 RPAREN		: ')' ;
 COLON		: ':' ;
@@ -132,7 +160,7 @@ RBRACE		: '}' ;
 DOT			: '.' ;
 LE  		: '<=' ;
 ASSIGN		: '<-' ;
-BLCOMMENT	: '(*'.*?BLCOMMENT?'*)' -> skip;
+//BLCOMMENT	: '(*'.*?BLCOMMENT?'*)' -> skip;
 WHITESPACE	: [\n\f\r\v\b\t ]+ -> skip ;
 /*STR_CONST	: '"'~('\u0000' | [EOF] | '"' | '\u000d' )* '"' {processString();};*/
 /*STR_CONST	: '"'~('\u0000' | [EOF] | '"' | '\n')*'"' {processString();}
@@ -141,15 +169,21 @@ WHITESPACE	: [\n\f\r\v\b\t ]+ -> skip ;
 			;*/
 
 STR_START	: '"' -> skip, pushMode(STRING_MODE);
+COMMENT_START	: '(*' -> skip, pushMode(COMMENT_MODE);
+SINGLE_LINE_COMMENT	: ('--'~('\n' | [EOF])*'\n' 
+					| '--'~('\n' | [EOF])*(EOF))  -> skip
+					;
+
+INCORRECT_CHARACTERS	: . {processCharacter();};
 
 
 mode STRING_MODE;
 //STRING	: (STRING_BODY_PLAIN | E_NEWLINE)*;
-STRING_END	: '"' -> skip, popMode;
+STRING_END	: '"' {processString();} -> popMode;
 NEWLINE		: '\n' {reportError("Unterminated string constant");} -> mode(DEFAULT_MODE) ;
-NULL_CHAR	: '\u0000' {reportError("String contains null character");} -> mode(DEFAULT_MODE) ;
-F_EOF_STR	: EOF {reportError("String contains EOF	");}->  mode(DEFAULT_MODE) ;
-STRING_BODY_PLAIN	: (~('\u0000' | [EOF] | '"' | '\n')('\\''\n')?('\\''\"')?)+ {processString();}
+//NULL_CHAR	: '\u0000' {reportError("String contains null character");} -> mode(DEFAULT_MODE) ;
+F_EOF_STR	: .(EOF) {reportError("EOF in string constant");}->  mode(DEFAULT_MODE) ;
+STRING_BODY_PLAIN	: (~('\u0000' | [EOF] | '"' | '\n')('\\''\n')?('\\''\"')?)+ -> more//{processString();}
 				    ; //TODO unescaped newline - maybe done
 //fragment END_QUOTE	: ~('\\')'"';
 /*BACKSLASH	: '\\' -> skip, pushMode(ESCAPE_MODE);
@@ -157,3 +191,16 @@ STRING_BODY_PLAIN	: (~('\u0000' | [EOF] | '"' | '\n')('\\''\n')?('\\''\"')?)+ {p
 mode ESCAPE_MODE;
 NEWLINE		: '\n' -> popMode;*/
 
+mode COMMENT_MODE;
+COMMENT_START_CM	: '(*' -> skip, pushMode(COMMENT_MODE);
+COMMENT_END	: '*)' -> skip, popMode;
+EOF_F		: .(EOF) {reportError("EOF in comment");} -> mode(DEFAULT_MODE);
+ANYTHING 	: . -> skip;
+/*NOT_EOF_STAR : ~([EOF] | '*' | '(') ;
+STAR_WITHOUT_PARENTHESES : '*'~(')') ;
+PARENTHESES_WITHOUT_STAR	:  '('~('*');
+THINGS_TO_SKIP	: (NOT_EOF_STAR | STAR_WITHOUT_PARENTHESES | PARENTHESES_WITHOUT_STAR)* -> skip;*/
+
+/*NO_STAR	: (~([EOF])~('*')?)+ -> skip;
+EOF_F	: EOF {reportError("EOF in comment");} -> mode(DEFAULT_MODE);
+STAR_WITHOUT_PARENTHESIS	: (~([EOF])('*'~(')'))?)+ -> skip;*/
