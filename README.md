@@ -79,3 +79,15 @@ This is used to report errors when a character that cannot be the start of any v
 * As expected, all of these are ignored.
 * From Section 10.2, it has also been tested that a string containing a null character gives an error. Moreover, when a newline is encountered after the error, it has been tested that lexical analysis resumes from the new line, and it is not treated as a part of the existing string.
 * From Section 10.3, it is also checked that a single line comment ending with an EOF is valid.
+
+* As the test cases cover each section, this gives an indication that they are sufficient and that the code is correct.
+* Some more test cases containing correct Cool code has been given to show that it is tokenized correctly.
+
+## Error Handling
+* Invalid characters are handled by INCORRECT_CHARACTERS
+* Unescaped newlines in strings are handled by NEWLINE
+* Strings that are too long are checked inside `processString()`
+* String containing null character are checked in STRING_BODY_WITH_NULL.
+* Comments with EOF are handled in EOF_F.
+* Strings with EOF are handled in F_EOF_STR.
+* Unmatched `*)` is handled in STRAY_COMMENT.
