@@ -1,6 +1,6 @@
 class Main {
 	main():IO {
-		new IO.out_string("\nHello world!) \
-		true \
-	}; -- \
-}; "A
+		new IO.out_string("\nHello wor\"ld!") 
+		true 
+	}; --
+};

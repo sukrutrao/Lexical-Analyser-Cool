@@ -68,10 +68,23 @@ tokens{
 	public void processString() {
 		Token t = _factory.create(_tokenFactorySourcePair, _type, _text, _channel, _tokenStartCharIndex, getCharIndex()-1, _tokenStartLine, _tokenStartCharPositionInLine);
 		String text = t.getText();
-		setType(STR_CONST);
-//		reportError(text);
+		String escape_chars = "btnf";
+		String escape_chars_results = "\b\t\n\f";
+		int index = text.indexOf('\\');
+		while(index != -1) 	{
+			int escape_index = escape_chars.indexOf(text.charAt(index+1));
+			if(escape_index != -1) 	{
+				text = text.substring(0,index) + escape_chars_results.charAt(escape_index) + text.substring(index+2);
+			}
+			else
+			{
+				text = text.substring(0,index) + text.substring(index+1);
+			}
+			index = text.indexOf('\\');
+		}
+		setText(text);
+		setType(STR_CONST);		
 		//write your code to test strings here
-
 	}
 }
 
@@ -136,8 +149,9 @@ STRING_END	: '"' -> skip, popMode;
 NEWLINE		: '\n' {reportError("Unterminated string constant");} -> mode(DEFAULT_MODE) ;
 NULL_CHAR	: '\u0000' {reportError("String contains null character");} -> mode(DEFAULT_MODE) ;
 F_EOF_STR	: EOF {reportError("String contains EOF	");}->  mode(DEFAULT_MODE) ;
-STRING_BODY_PLAIN	: (~('\u0000' | [EOF] | '"' | '\n' )('\\''\n')?)+ {processString();}
-				    ; //TODO unescaped newline
+STRING_BODY_PLAIN	: (~('\u0000' | [EOF] | '"' | '\n')('\\''\n')?('\\''\"')?)+ {processString();}
+				    ; //TODO unescaped newline - maybe done
+//fragment END_QUOTE	: ~('\\')'"';
 /*BACKSLASH	: '\\' -> skip, pushMode(ESCAPE_MODE);
 
 mode ESCAPE_MODE;
