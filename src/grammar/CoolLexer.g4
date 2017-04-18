@@ -68,7 +68,8 @@ tokens{
 	public void processString() {
 		Token t = _factory.create(_tokenFactorySourcePair, _type, _text, _channel, _tokenStartCharIndex, getCharIndex()-1, _tokenStartLine, _tokenStartCharPositionInLine);
 		String text = t.getText();
-
+		setType(STR_CONST);
+//		reportError(text);
 		//write your code to test strings here
 
 	}
@@ -120,22 +121,25 @@ LE  		: '<=' ;
 ASSIGN		: '<-' ;
 BLCOMMENT	: '(*'.*?BLCOMMENT?'*)' -> skip;
 WHITESPACE	: [\n\f\r\v\b\t ]+ -> skip ;
-
+/*STR_CONST	: '"'~('\u0000' | [EOF] | '"' | '\u000d' )* '"' {processString();};*/
+/*STR_CONST	: '"'~('\u0000' | [EOF] | '"' | '\n')*'"' {processString();}
+			| '"'~('\u0000' | '"' | '\n')*[EOF] {reportError("String contains EOF");}
+			| '"'~([EOF] | '"' | '\u0000')*'\n' {reportError("Unterminated string");}
+			;*/
 
 STR_START	: '"' -> skip, pushMode(STRING_MODE);
 
 
 mode STRING_MODE;
-STRING_END	: (STRING_BODY_PLAIN | E_NEWLINE)*'"' -> popMode, type(STR_CONST);
-E_NEWLINE	: '\\''\u000d' ;
-/*NEWLINE		: '\u000d' {reportError("Unterminated string constant");} -> skip, mode(DEFAULT_MODE) ;
-NULL_CHAR	: '\u0000' {reportError("String contains null character");} -> skip, mode(DEFAULT_MODE) ;
-F_EOF_STR	: [EOF] {reportError("String contains EOF	");} -> skip, mode(DEFAULT_MODE) ;*/
-STRING_BODY_PLAIN	: ~('\u0000' | [EOF] | '"' | '\u000d' | '\\')+ ;
+//STRING	: (STRING_BODY_PLAIN | E_NEWLINE)*;
+STRING_END	: '"' -> skip, popMode;
+NEWLINE		: '\n' {reportError("Unterminated string constant");} -> mode(DEFAULT_MODE) ;
+NULL_CHAR	: '\u0000' {reportError("String contains null character");} -> mode(DEFAULT_MODE) ;
+F_EOF_STR	: EOF {reportError("String contains EOF	");}->  mode(DEFAULT_MODE) ;
+STRING_BODY_PLAIN	: (~('\u0000' | [EOF] | '"' | '\n' )('\\''\n')?)+ {processString();}
+				    ; //TODO unescaped newline
+/*BACKSLASH	: '\\' -> skip, pushMode(ESCAPE_MODE);
 
-
-
-
-
-
+mode ESCAPE_MODE;
+NEWLINE		: '\n' -> popMode;*/
 
